@@ -4,5 +4,5 @@ Function similar to Document Scanner. Given images of A4 paper sheets, output pa
 
 Images are available. Codes implemented with The CImg Library in C++ language. For more detail about the theory, implementation, results and improvement, please read [my post](https://hypjudy.github.io/2017/03/28/cvpr-A4-paper-sheet-detection-and-cropping/).
 
-![paper sheet with edges and corners detected](Dataset/2_marked.bmp)
-![cropped paper sheet](Dataset/2_A4.bmp)
+![paper sheet with edges and corners detected](Dataset/14_marked.bmp)
+![cropped paper sheet](Dataset/14_A4.bmp)
