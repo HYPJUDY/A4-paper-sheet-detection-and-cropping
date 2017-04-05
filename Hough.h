@@ -1,9 +1,7 @@
 /*
-#  File        : hough_transform.h ( C++ source file )
-#
+#  File        : Hough.h
 #  Description : Detect Edges of Paper Sheet with Hough Transform
-#
-#  Copyright   : HYPJUDY ( https://hypjudy.github.io/ )
+#  Copyright   : HYPJUDY ( https://hypjudy.github.io/ ) 2017/4/6
 */
 
 #pragma once
@@ -34,30 +32,46 @@ struct Point {
 };
 class Hough {
 private:
-	const double BLUR_SIGMA = 2;
-	const double GRAD_THRESHOLD = 20;
-	const int BIAS = 30; // subtrat it from threshold used in getHoughEdges
+	/* adjustable parameters */
+	const float BLUR_SIGMA = 2;
+	const float GRAD_THRESHOLD = 20;
+	const int Q = 3; // the denominator parameter used to get
+	                 // threshold in getHoughEdges; aims to filter
+	                 // out more than 3 edges
 	const int SCOPE = 20; // scope of clusters in hough space
+	const int D = 20; // intersects can be out of image in distance D
+	float x1, y1, x2, y2, x3, y3, x4, y4; // source corners
+
 	int w, h; // width and height of rgb image
-	CImg<double> gradients;
-	CImg<double> hough_space;
-	CImg<double> rgb_img;
-	CImg<double> gray_img;
+	CImg<float> gradients;
+	CImg<float> hough_space;
+	CImg<float> rgb_img;
+	CImg<float> marked_img; // with paper sheet corners and edges mark
+	CImg<float> gray_img;
 	std::vector<HoughEdge> hough_edges; // four edges in hough space
 	std::vector<Line> lines; // four edges in parameter space
-	std::vector<Point> Corners; // four corners in normal space
+	std::vector<Point> corners; // duplicate four corners in normal space
+	std::vector<Point> ordered_corners; // four corners in normal space
+	// in the order of top-left, top-right, bottom-left, bottom-right
 
-public:
-	Hough(char * filePath);
-	double distance(double diff_x, double diff_y);
+	float distance(float diff_x, float diff_y);
 	void rgb2gray();
 	void getGradient();
 	void houghTransform();
 	void getHoughEdges();
 	void getLines();
 	void getCorners();
+	void orderCorners();
 	void displayCornersAndLines();
-	CImg<double> getRGBImg() { return rgb_img; }
+public:
+	Hough(char * filePath);
+	CImg<float> getRGBImg() { return rgb_img; }
+	CImg<float> getMarkedImg() { return marked_img; }
+	std::vector<Point> getOrderedCorners() { return ordered_corners;}
 };
+
+
+
+
 
 #endif
