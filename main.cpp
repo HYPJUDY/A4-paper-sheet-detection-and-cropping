@@ -9,7 +9,7 @@
 
 #include "Warping.h"
 int main() {
-	int CASE = 0; // 1 for dataset1; otherwise for dataset2
+	int CASE = 1; // 1 for dataset1; otherwise for dataset2
 
 	/* Parameters for dataset */
 	int image_num = 16;
@@ -50,3 +50,12 @@ int main() {
 	}
 	return 0;
 }
+
+/* Error cases guide:
+* exit(-1): ERROR: Please set parameter Q larger in file \
+*			'hough_transform.h' to filter out four edges!
+* exit(-2): ERROR: Bug in function void Hough::getHoughEdges()!\
+*           Please check the ifelse statement to filter out four hough_edges.
+* exit(-3): ERROR: Can not detect four ordered_corners in function \
+            void Hough::orderCorners(). Please try to adjust parameters.
+*/

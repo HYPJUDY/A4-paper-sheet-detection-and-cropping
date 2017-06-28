@@ -45,13 +45,13 @@ Hough::Hough(char* filePath) {
 	hough_space = CImg<double>(360, distance(w, h), 1, 1, 0);
 
 	rgb2gray();
-	gray_img.blur(BLUR_SIGMA).display();//.save("Dataset/blur.bmp") noise reduction
+	gray_img.blur(BLUR_SIGMA).display();//.save("Dataset/blur.bmp")
 	getGradient();
-	gradients.display();//.display().save("Dataset/gradient.bmp");
+	gradients.display();//.save("Dataset/gradient.bmp");
 	houghTransform();
-	hough_space.display();//.display().save("Dataset/hough_space.bmp");
+	hough_space.display();//.save("Dataset/hough_space.bmp");
 	getHoughEdges();
-	hough_space.display();//.display().save("Dataset/hough_space2.bmp");
+	hough_space.display();//.save("Dataset/hough_space2.bmp");
 	getLines();
 	getCorners();
 	orderCorners();

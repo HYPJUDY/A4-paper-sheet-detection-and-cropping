@@ -36,15 +36,19 @@ struct Point {
 class Hough {
 private:
 	/* adjustable parameters */
-	const float BLUR_SIGMA = 2;
+	// most of the time, you just need to modify GRAD_THRESHOLD
+	// and Q according to the number of hough_edges
 	const float GRAD_THRESHOLD = 20;
 	const int Q = 3; // the denominator parameter used to get
 	                 // threshold in getHoughEdges; aims to filter
 	                 // out more than 3 edges
+	const float BLUR_SIGMA = 2;
 	// since angle and rho are in different scale, use different scope
 	const int SCOPE_ANGLE = 20; // scope of clusters in hough space
 	const int SCOPE_RHO = 100; // scope of clusters in hough space
 	const int D = 20; // intersects can be out of image in distance D
+	
+	
 	float x1, y1, x2, y2, x3, y3, x4, y4; // source corners
 
 	int w, h; // width and height of rgb image
