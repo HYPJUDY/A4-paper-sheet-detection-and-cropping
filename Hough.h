@@ -1,13 +1,16 @@
 /*
 #  File        : Hough.h
 #  Description : Detect Edges of Paper Sheet with Hough Transform
-#  Copyright   : HYPJUDY ( https://hypjudy.github.io/ ) 2017/4/6
+#  Copyright   : HYPJUDY 2017/4/6
+#  Details     : https://hypjudy.github.io/2017/03/28/cvpr-A4-paper-sheet-detection-and-cropping/
+#  Code        : https://github.com/HYPJUDY/A4-paper-sheet-detection-and-cropping
 */
 
 #pragma once
 #ifndef _Hough_
 #define _Hough_
 #include "CImg.h"
+#include<iostream>
 #include<vector>
 using namespace cimg_library;
 struct HoughEdge {
@@ -38,7 +41,9 @@ private:
 	const int Q = 3; // the denominator parameter used to get
 	                 // threshold in getHoughEdges; aims to filter
 	                 // out more than 3 edges
-	const int SCOPE = 20; // scope of clusters in hough space
+	// since angle and rho are in different scale, use different scope
+	const int SCOPE_ANGLE = 20; // scope of clusters in hough space
+	const int SCOPE_RHO = 100; // scope of clusters in hough space
 	const int D = 20; // intersects can be out of image in distance D
 	float x1, y1, x2, y2, x3, y3, x4, y4; // source corners
 

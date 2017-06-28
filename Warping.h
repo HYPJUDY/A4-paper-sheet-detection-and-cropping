@@ -1,7 +1,9 @@
 /*
 #  File        : Warping.h
 #  Description : Perspective transformation of 2D image
-#  Copyright   : HYPJUDY ( https://hypjudy.github.io/ ) 2017/4/6
+#  Copyright   : HYPJUDY 2017/4/6
+#  Details     : https://hypjudy.github.io/2017/03/28/cvpr-A4-paper-sheet-detection-and-cropping/
+#  Code        : https://github.com/HYPJUDY/A4-paper-sheet-detection-and-cropping
 */
 
 #pragma once

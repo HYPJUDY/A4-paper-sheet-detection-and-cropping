@@ -1,7 +1,9 @@
 /*
 #  File        : Warping.cpp
 #  Description : Perspective transformation of 2D image
-#  Copyright   : HYPJUDY ( https://hypjudy.github.io/ ) 2017/4/6
+#  Copyright   : HYPJUDY 2017/4/6
+#  Details     : https://hypjudy.github.io/2017/03/28/cvpr-A4-paper-sheet-detection-and-cropping/
+#  Code        : https://github.com/HYPJUDY/A4-paper-sheet-detection-and-cropping
 */
 
 #include "Warping.h"
@@ -57,7 +59,8 @@ void Warping::reverseMapping() {
 	cimg_forXYC(dest_A4, u, v, c) { // c indicates color channels
 		float x = getXTransformInv(u, v);
 		float y = getYTransformInv(u, v);
-		dest_A4(u, v, c) = bilinearInterpolate(x, y, c);
+		if(x >= 0 && y >= 0 && x + 1 < src.width() && y + 1 < src.height())
+		    dest_A4(u, v, c) = bilinearInterpolate(x, y, c);
 	}
 }
 
