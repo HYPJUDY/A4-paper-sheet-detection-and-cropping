@@ -274,6 +274,7 @@ void Hough::orderCorners() {
 	// Usually, if paper sheet is placed vertically(do not need strictly)
 	// corners are ordered in top-left, top-right, bottom-left, bottom-right
 	//  position by sorting (compare by the distance from original point)
+	// Note: original point is in the top-left of image
 	sort(corners.begin(), corners.end(), cmp_corners);
 	for (int i = 0; i < corners.size(); i += 2)
 		ordered_corners.push_back(Point(corners[i].x, corners[i].y));
@@ -306,12 +307,13 @@ void Hough::orderCorners() {
 		y4 -= SHIFT;
 	}
 	
-	// If horizontally, top-left and bottom-left corners,
-	// top-right and bottom-tight corners need swapping.
+	// If horizontally or x1 > x2 (means top-left is in the right 
+	// of top-right), top-left and bottom-left corners,
+	// top-right and bottom-right corners need swapping.
 	// If not, it seems like look from the back of the paper
 	// I roughly judge it by image's width and height
 	// but not paper sheet's for convenience.
-	if (w > h) { 
+	if (w > h || x1 > x2) { 
 		int tmpx = x2, tmpy = y2;
 		x2 = x1, y2 = y1;
 		x1 = tmpx, y1 = tmpy;
