@@ -1,5 +1,5 @@
 # A4 Paper Sheet Detection and Cropping
-Function similar to Document Scanner. Given images of A4 paper sheets, output paper sheets' four corners as well as four edges and their equations. Then crop the background and leave the paper sheet in proper position and standard scaling. We can do this in three steps. Firstly, detect edges with hough transform. Then store the corners in order. Lastly, applying a perspective transform to warp the image.
+Function similar to Document Scanner. Given images of A4 paper sheets, output paper sheets' four corners as well as four edges and their equations. Then crop the background and leave the paper sheet in proper position and standard scaling. We can do this in three steps. Firstly, detect edges with hough transform. Then store the corners in order. Lastly, apply a perspective transform to warp the image.
 
 For more details about the theory, implementation, results and improvement, please read [my post](https://hypjudy.github.io/2017/03/28/cvpr-A4-paper-sheet-detection-and-cropping/).
 
@@ -8,6 +8,9 @@ Any feedback is welcomed!
 ## Features
 * Writing in C++ from scratch
 * Default parameters apply to diverse datasets
+
+## Related Project
+[Handwritten Digits Recognition](https://github.com/HYPJUDY/handwritten-digits-recognition)
 
 ## Usage
 ### Dependencies
