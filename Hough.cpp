@@ -38,7 +38,7 @@ bool cmp_lines(Line l1, Line l2) {
 /* Constructor */
 Hough::Hough(char* filePath) {
 	// init
-	rgb_img.load_bmp(filePath);
+	rgb_img.load(filePath);
 	w = rgb_img.width();
 	h = rgb_img.height();
 	gray_img = gradients = CImg<double>(w, h, 1, 1, 0);
